@@ -1,6 +1,6 @@
 use rusqlite::Connection;
 
-pub const LIST_GAMES: [&str; 3] = ["Jeux motus","juste nombre", "Tester vos réflexe"];
+pub const LIST_GAMES: [&str; 3] = ["Jeux motus","Jeux du juste nombre", "Tester vos réflexe"];
 
 
 pub struct Game {
@@ -40,8 +40,8 @@ pub fn play_game(conn: &Connection, game_name: &str) -> Result<i64, &'static str
             "Jeux motus" => {
                 score += game1::play_game();
             }
-            "Jeux nombre" => {
-                score = 10
+            "Jeux du juste nombre" => {
+                score += game3::play_game();
             }
             "Tester vos réflexe" => {
                 score += game2::play_game();

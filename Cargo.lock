@@ -133,7 +133,6 @@ dependencies = [
  "game2",
  "game3",
  "rusqlite",
- "ui",
 ]
 
 [[package]]
