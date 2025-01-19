@@ -1,0 +1,14 @@
+[package]
+name = "hub-game"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members=[".", "game1", "game2", "game3", "ui"]
+
+[dependencies]
+rusqlite = { version = "0.32.*", features = ["bundled"] }
+ui = {path = "ui"}
+game1 = {path = "game1"}
+game2 = {path = "game2"}
+game3 = {path = "game3"}
