@@ -6,19 +6,18 @@ use rusqlite::Connection;
 use crate::database::sqlite::initiate_db;
 use crate::models::games::LIST_GAMES;
 use crate::models::scores::add_score;
+use crate::models::users::get_user;
 
 fn main() -> Result<(), Error> {
-    let conn: Connection = Connection::open("scores.sqlite")
-        .expect("Erreur lors de l'ouverture");
-
+    let conn: Connection = Connection::open("scores.sqlite").expect("Erreur lors de l'ouverture");
     initiate_db(&conn);
-
 
     println!("Hub de jeux ! by Mathieu");
     println!("Veuillez entrez votre alias :");
+
     let mut username: String = String::new();
     std::io::stdin().read_line(&mut username).expect("Failed to read line");
-    let user = models::users::get_user(&conn, username.trim());
+    let user = get_user(&conn, username.trim());
 
     loop {
         println!("Menu principal, {} choisi un jeux :", username);
@@ -57,7 +56,6 @@ fn main() -> Result<(), Error> {
                 models::scores::print_score(&conn, &user).unwrap();
             }
             5 => {
-
                 println!("Au revoir");
                 break Ok(());
             }
